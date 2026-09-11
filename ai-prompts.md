@@ -2,7 +2,7 @@
 
 > 用途：沉淀日常对 AI 说的常用指令（提示词模板），随用随取。
 > 维护方式：后续新增内容直接追加到「新增提示词模板」之前，并同步更新同名 HTML 文件 `ai-prompts.html`。
-> 最后更新：2026-09-12 02:13
+> 最后更新：2026-09-12 03:36
 > 每条提示词均记录录入时间，便于追溯新增与修订。
 
 ---
@@ -14,8 +14,9 @@
 3. [Review 当前工作区改动](#3-review-当前工作区改动)
 4. [GitHub 项目搜索（技能调用）](#4-github-项目搜索技能调用)
 5. [运行测试](#5-运行测试)
-6. [新增提示词模板](#6-新增提示词模板)
-7. [收录记录](#7-收录记录)
+6. [项目代码仓库创建并提交](#6-项目代码仓库创建并提交)
+7. [新增提示词模板](#7-新增提示词模板)
+8. [收录记录](#8-收录记录)
 
 ---
 
@@ -150,7 +151,46 @@ python -m unittest discover -s scripts -p "test_*.py" -v
 
 ---
 
-## 6. 新增提示词模板
+## 6. 项目代码仓库创建并提交
+
+> 记录时间：2026-09-12 03:36
+
+**适用场景**：项目代码仓库创建并提交。
+
+**提示词：**
+
+```text
+把项目镜像到 GitHub：创建仓库，配置 Gitee + GitHub 双远程同步推送（以后每次 push 两边都更新）
+```
+
+**参考流程（2026-09-12 实操验证）：**
+
+```bash
+# 1) 创建远程仓库：GitHub 用 API（POST /user/repos）或网页；Gitee 同理
+# 2) 本地初始化并提交
+git init -b main
+git add -A
+git commit -m "chore: 初始化"
+
+# 3) 配置双推送远程（push 地址 Gitee 放在前面：
+#    多个 push 地址顺序执行，前一个失败会中止后面的）
+git remote add origin https://github.com/<user>/<repo>.git
+git remote set-url --add --push origin https://gitee.com/<user>/<repo>.git
+git remote set-url --add --push origin https://github.com/<user>/<repo>.git
+
+# 4) 推送（一次推送两边）
+git push -u origin main
+```
+
+**踩坑经验：**
+
+- GitHub **细粒度令牌**（`github_pat_` 开头）建仓库容易、push 容易 403：需在令牌设置里把新仓库加入授权列表，并授予 **Contents: Read and write**。
+- 令牌可存入系统凭据管理器，避免明文进 `.git/config`：`printf 'protocol=https\nhost=github.com\nusername=<user>\npassword=<token>\n\n' | git credential approve`。
+- Gitee API 修改仓库信息（如改公开/私有）必须带 `name` 字段，否则报 400 `name is missing`。
+
+---
+
+## 7. 新增提示词模板
 
 > 以后要收录新的一句话指令时，复制下面的空模板填写即可（MD 与 HTML 同步添加）。
 
@@ -168,8 +208,9 @@ python -m unittest discover -s scripts -p "test_*.py" -v
 
 ---
 
-## 7. 收录记录
+## 8. 收录记录
 
 | 日期 | 时间 | 新增内容 |
 | --- | --- | --- |
 | 2026-09-12 | 02:13 | 初版：任务交接、验收清单、代码 Review、GitHub 搜索、运行测试 |
+| 2026-09-12 | 03:36 | 新增：项目代码仓库创建并提交（含双远程配置参考流程与踩坑经验） |

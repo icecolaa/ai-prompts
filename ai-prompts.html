@@ -126,7 +126,7 @@
   <header class="page">
     <h1>AI 常用提示词清单</h1>
     <p>沉淀日常对 AI 说的常用指令，随用随取。</p>
-    <p>最后更新：2026-09-12 02:13 · 新增内容会同步追加到本文件</p>
+    <p>最后更新：2026-09-12 03:36 · 新增内容会同步追加到本文件</p>
     <p>每条提示词均记录录入时间，便于追溯新增与修订。</p>
   </header>
 
@@ -138,8 +138,9 @@
       <li><a href="#s3">Review 当前工作区改动</a></li>
       <li><a href="#s4">GitHub 项目搜索（技能调用）</a></li>
       <li><a href="#s5">运行测试</a></li>
-      <li><a href="#s6">新增提示词模板</a></li>
-      <li><a href="#s7">收录记录</a></li>
+      <li><a href="#s6">项目代码仓库创建并提交</a></li>
+      <li><a href="#s7">新增提示词模板</a></li>
+      <li><a href="#s8">收录记录</a></li>
     </ol>
   </nav>
 
@@ -265,7 +266,44 @@ python -m unittest discover -s scripts -p "test_*.py" -v</pre>
   </section>
 
   <section id="s6">
-    <h2>6. 新增提示词模板</h2>
+    <h2>6. 项目代码仓库创建并提交</h2>
+    <p class="recorded">记录时间：2026-09-12 03:36</p>
+    <p class="scenario"><b>适用场景：</b>项目代码仓库创建并提交。</p>
+
+    <div class="block">
+      <button class="copy" onclick="copyBlock(this)">复制</button>
+      <pre>把项目镜像到 GitHub：创建仓库，配置 Gitee + GitHub 双远程同步推送（以后每次 push 两边都更新）</pre>
+    </div>
+
+    <div class="block has-label">
+      <div class="label">参考流程（2026-09-12 实操验证）</div>
+      <button class="copy" onclick="copyBlock(this)">复制</button>
+      <pre># 1) 创建远程仓库：GitHub 用 API（POST /user/repos）或网页；Gitee 同理
+# 2) 本地初始化并提交
+git init -b main
+git add -A
+git commit -m "chore: 初始化"
+
+# 3) 配置双推送远程（push 地址 Gitee 放在前面：
+#    多个 push 地址顺序执行，前一个失败会中止后面的）
+git remote add origin https://github.com/&lt;user&gt;/&lt;repo&gt;.git
+git remote set-url --add --push origin https://gitee.com/&lt;user&gt;/&lt;repo&gt;.git
+git remote set-url --add --push origin https://github.com/&lt;user&gt;/&lt;repo&gt;.git
+
+# 4) 推送（一次推送两边）
+git push -u origin main</pre>
+    </div>
+
+    <p class="scenario"><b>踩坑经验：</b></p>
+    <ul style="margin:6px 0 12px; padding-left:22px; font-size:14px;">
+      <li>GitHub <b>细粒度令牌</b>（<code>github_pat_</code> 开头）建仓库容易、push 容易 403：需在令牌设置里把新仓库加入授权列表，并授予 <b>Contents: Read and write</b>。</li>
+      <li>令牌可存入系统凭据管理器，避免明文进 <code>.git/config</code>：<code>git credential approve</code>。</li>
+      <li>Gitee API 修改仓库信息（如改公开/私有）必须带 <code>name</code> 字段，否则报 400 <code>name is missing</code>。</li>
+    </ul>
+  </section>
+
+  <section id="s7">
+    <h2>7. 新增提示词模板</h2>
     <p class="scenario">以后要收录新的一句话指令时，复制下面的空模板填写即可（MD 与 HTML 同步添加）。</p>
     <div class="block">
       <button class="copy" onclick="copyBlock(this)">复制</button>
@@ -279,14 +317,15 @@ python -m unittest discover -s scripts -p "test_*.py" -v</pre>
     </div>
   </section>
 
-  <section id="s7">
-    <h2>7. 收录记录</h2>
+  <section id="s8">
+    <h2>8. 收录记录</h2>
     <table>
       <thead>
         <tr><th>日期</th><th>时间</th><th>新增内容</th></tr>
       </thead>
       <tbody>
         <tr><td>2026-09-12</td><td>02:13</td><td>初版：任务交接、验收清单、代码 Review、GitHub 搜索、运行测试</td></tr>
+        <tr><td>2026-09-12</td><td>03:36</td><td>新增：项目代码仓库创建并提交（含双远程配置参考流程与踩坑经验）</td></tr>
       </tbody>
     </table>
   </section>
