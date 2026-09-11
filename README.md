@@ -21,7 +21,15 @@ AI 常用提示词清单 —— 沉淀日常对 AI 说的常用指令，随用�
 
 ## 远程仓库
 
-本仓库同时镜像到两个平台，执行 `git push` 会一次推送到两边：
+本仓库同时镜像到两个平台，执行一次 `git push` 会推送到两边：
 
 - GitHub：<https://github.com/icecolaa/ai-prompts>
 - Gitee：<https://gitee.com/ice-colaa/ai-prompts>
+
+同步机制：`origin` 配置了两个 push 地址，`git push` 会依次推送。推送顺序为 Gitee 在前、GitHub 在后；若其中一个平台推送失败，Git 会中止并且不再推另一个平台，请留意命令退出码与报错。
+
+```bash
+git add -A
+git commit -m "更新提示词"
+git push          # 同时推送 Gitee + GitHub
+```
