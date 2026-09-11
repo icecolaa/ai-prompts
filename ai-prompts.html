@@ -126,7 +126,7 @@
   <header class="page">
     <h1>AI 常用提示词清单</h1>
     <p>沉淀日常对 AI 说的常用指令，随用随取。</p>
-    <p>最后更新：2026-09-12 03:36 · 新增内容会同步追加到本文件</p>
+    <p>最后更新：2026-09-12 05:40 · 新增内容会同步追加到本文件</p>
     <p>每条提示词均记录录入时间，便于追溯新增与修订。</p>
   </header>
 
@@ -139,8 +139,9 @@
       <li><a href="#s4">GitHub 项目搜索（技能调用）</a></li>
       <li><a href="#s5">运行测试</a></li>
       <li><a href="#s6">项目代码仓库创建并提交</a></li>
-      <li><a href="#s7">新增提示词模板</a></li>
-      <li><a href="#s8">收录记录</a></li>
+      <li><a href="#s7">修改项目设计样式</a></li>
+      <li><a href="#s8">新增提示词模板</a></li>
+      <li><a href="#s9">收录记录</a></li>
     </ol>
   </nav>
 
@@ -303,7 +304,29 @@ git push -u origin main</pre>
   </section>
 
   <section id="s7">
-    <h2>7. 新增提示词模板</h2>
+    <h2>7. 修改项目设计样式</h2>
+    <p class="recorded">记录时间：2026-09-12 05:40</p>
+
+    <p class="scenario"><b>适用场景 1：</b>根据 DESIGN.md 修改项目设计样式。</p>
+    <div class="block">
+      <button class="copy" onclick="copyBlock(this)">复制</button>
+      <pre>1.帮我配置 AGENTS.md ## Design System
+所有 UI/前端代码必须遵循根目录 DESIGN.md 的设计规范，写界面代码前先读该文件。
+并把 DESIGN.md 文件放进根目录
+2.按 DESIGN.md 审计当前项目，列出不符合规范的点再重构(可以配合 redesign-existing-projects skill)</pre>
+    </div>
+
+    <p class="scenario"><b>适用场景 2：</b>审计现有网站，去除「AI 味」模式并升级。</p>
+    <div class="block">
+      <button class="copy" onclick="copyBlock(this)">复制</button>
+      <pre>审计现有网站，去除“AI 味”模式并升级</pre>
+    </div>
+
+    <p class="scenario"><b>可配合技能：</b><code>redesign-existing-projects</code>（升级现有网站、去除 AI 味，不破坏功能）、<code>design-taste-frontend</code>（新前端设计方向）、<code>frontend-design</code>（视觉设计指导）。</p>
+  </section>
+
+  <section id="s8">
+    <h2>8. 新增提示词模板</h2>
     <p class="scenario">以后要收录新的一句话指令时，复制下面的空模板填写即可（MD 与 HTML 同步添加）。</p>
     <div class="block">
       <button class="copy" onclick="copyBlock(this)">复制</button>
@@ -317,8 +340,8 @@ git push -u origin main</pre>
     </div>
   </section>
 
-  <section id="s8">
-    <h2>8. 收录记录</h2>
+  <section id="s9">
+    <h2>9. 收录记录</h2>
     <table>
       <thead>
         <tr><th>日期</th><th>时间</th><th>新增内容</th></tr>
@@ -326,6 +349,7 @@ git push -u origin main</pre>
       <tbody>
         <tr><td>2026-09-12</td><td>02:13</td><td>初版：任务交接、验收清单、代码 Review、GitHub 搜索、运行测试</td></tr>
         <tr><td>2026-09-12</td><td>03:36</td><td>新增：项目代码仓库创建并提交（含双远程配置参考流程与踩坑经验）</td></tr>
+        <tr><td>2026-09-12</td><td>05:40</td><td>新增：修改项目设计样式（DESIGN.md 规范 + 去 AI 味升级）；修复模板节嵌套围栏</td></tr>
       </tbody>
     </table>
   </section>
