@@ -1,0 +1,4 @@
+# 统一按文本处理，仓库内使用 LF，检出到 Windows 时自动转 CRLF
+* text=auto
+*.md text eol=lf
+*.html text eol=lf
