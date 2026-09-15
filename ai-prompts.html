@@ -126,7 +126,7 @@
   <header class="page">
     <h1>AI 常用提示词清单</h1>
     <p>沉淀日常对 AI 说的常用指令，随用随取。</p>
-    <p>最后更新：2026-09-12 05:40 · 新增内容会同步追加到本文件</p>
+    <p>最后更新：2026-09-15 23:17 · 新增内容会同步追加到本文件</p>
     <p>每条提示词均记录录入时间，便于追溯新增与修订。</p>
   </header>
 
@@ -140,8 +140,9 @@
       <li><a href="#s5">运行测试</a></li>
       <li><a href="#s6">项目代码仓库创建并提交</a></li>
       <li><a href="#s7">修改项目设计样式</a></li>
-      <li><a href="#s8">新增提示词模板</a></li>
-      <li><a href="#s9">收录记录</a></li>
+      <li><a href="#s8">Archify 生成系统总览图</a></li>
+      <li><a href="#s9">新增提示词模板</a></li>
+      <li><a href="#s10">收录记录</a></li>
     </ol>
   </nav>
 
@@ -326,7 +327,20 @@ git push -u origin main</pre>
   </section>
 
   <section id="s8">
-    <h2>8. 新增提示词模板</h2>
+    <h2>8. Archify 生成系统总览图</h2>
+    <p class="recorded">记录时间：2026-09-15 23:17</p>
+    <p class="scenario"><b>适用场景：</b>系统里有什么、归谁负责、彼此如何连接？适合新人上手、方案评审、仓库梳理和服务全景说明。</p>
+
+    <div class="block">
+      <button class="copy" onclick="copyBlock(this)">复制</button>
+      <pre>分析这个仓库，然后用 Archify 生成高层系统架构图。展示核心运行时组件、一条主要请求或数据路径、外部依赖、归属或信任边界；支持性细节放进卡片，不要继续堆连线。</pre>
+    </div>
+
+    <p class="scenario"><b>说明：</b><code>archify</code> 是本机可用技能，生成可交互的独立 HTML 架构图（架构/流程/时序/数据流/状态图均可），支持暗色/亮色主题与 PNG/SVG/WebM 导出。</p>
+  </section>
+
+  <section id="s9">
+    <h2>9. 新增提示词模板</h2>
     <p class="scenario">以后要收录新的一句话指令时，复制下面的空模板填写即可（MD 与 HTML 同步添加）。</p>
     <div class="block">
       <button class="copy" onclick="copyBlock(this)">复制</button>
@@ -340,8 +354,8 @@ git push -u origin main</pre>
     </div>
   </section>
 
-  <section id="s9">
-    <h2>9. 收录记录</h2>
+  <section id="s10">
+    <h2>10. 收录记录</h2>
     <table>
       <thead>
         <tr><th>日期</th><th>时间</th><th>新增内容</th></tr>
@@ -350,6 +364,7 @@ git push -u origin main</pre>
         <tr><td>2026-09-12</td><td>02:13</td><td>初版：任务交接、验收清单、代码 Review、GitHub 搜索、运行测试</td></tr>
         <tr><td>2026-09-12</td><td>03:36</td><td>新增：项目代码仓库创建并提交（含双远程配置参考流程与踩坑经验）</td></tr>
         <tr><td>2026-09-12</td><td>05:40</td><td>新增：修改项目设计样式（DESIGN.md 规范 + 去 AI 味升级）；修复模板节嵌套围栏</td></tr>
+        <tr><td>2026-09-15</td><td>23:17</td><td>新增：Archify 生成系统总览图（高层架构图提示词）</td></tr>
       </tbody>
     </table>
   </section>
