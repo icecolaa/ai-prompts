@@ -126,7 +126,7 @@
   <header class="page">
     <h1>AI 常用提示词清单</h1>
     <p>沉淀日常对 AI 说的常用指令，随用随取。</p>
-    <p>最后更新：2026-09-15 23:17 · 新增内容会同步追加到本文件</p>
+    <p>最后更新：2026-09-17 23:21 · 新增内容会同步追加到本文件</p>
     <p>每条提示词均记录录入时间，便于追溯新增与修订。</p>
   </header>
 
@@ -141,8 +141,9 @@
       <li><a href="#s6">项目代码仓库创建并提交</a></li>
       <li><a href="#s7">修改项目设计样式</a></li>
       <li><a href="#s8">Archify 生成系统总览图</a></li>
-      <li><a href="#s9">新增提示词模板</a></li>
-      <li><a href="#s10">收录记录</a></li>
+      <li><a href="#s9">i-have-adhd 输出风格</a></li>
+      <li><a href="#s10">新增提示词模板</a></li>
+      <li><a href="#s11">收录记录</a></li>
     </ol>
   </nav>
 
@@ -340,7 +341,37 @@ git push -u origin main</pre>
   </section>
 
   <section id="s9">
-    <h2>9. 新增提示词模板</h2>
+    <h2>9. i-have-adhd 输出风格</h2>
+    <p class="recorded">记录时间：2026-09-17 23:21</p>
+    <p class="scenario"><b>适用场景：</b>读者有 ADHD。请让每条回复都便于立即执行。</p>
+
+    <div class="block">
+      <button class="copy" onclick="copyBlock(this)">复制</button>
+      <pre>安装 npx skills add ayghri/i-have-adhd -g
+始终启用
+## 输出风格
+
+读者有 ADHD。请让每条回复都便于立即执行：
+
+1. 先给出答案或下一步行动：命令、路径或代码片段优先。
+2. 为多步骤工作编号；每一步只包含一个明确的行动。
+3. 最后给出一个能在两分钟内完成的下一步行动。
+4. 先解决当前问题，再提出新问题。
+5. 每轮重述进度（"5 步中的第 3 步已完成"）。
+6. 用具体单位估算时间，绝不说"一会儿"。
+7. 修改后说明现在可以正常工作的内容。
+8. 出错时说明位置、原因和修复方法，不夸大。
+9. 列表最多包含 5 项。
+10. 不要前言、回顾或结束语。
+
+例外：用户要求解释时应充分说明。执行破坏性操作前先确认。连续三次修复失败后停止，并指出可疑的假设。请求含糊时只问一个简短问题。</pre>
+    </div>
+
+    <p class="scenario"><b>说明：</b>本机技能库已安装 <code>i-have-adhd</code>，用 <code>/i-have-adhd</code> 触发并持续生效，说 "stop adhd mode" 关闭；无需再执行 <code>npx skills add</code>。</p>
+  </section>
+
+  <section id="s10">
+    <h2>10. 新增提示词模板</h2>
     <p class="scenario">以后要收录新的一句话指令时，复制下面的空模板填写即可（MD 与 HTML 同步添加）。</p>
     <div class="block">
       <button class="copy" onclick="copyBlock(this)">复制</button>
@@ -354,8 +385,8 @@ git push -u origin main</pre>
     </div>
   </section>
 
-  <section id="s10">
-    <h2>10. 收录记录</h2>
+  <section id="s11">
+    <h2>11. 收录记录</h2>
     <table>
       <thead>
         <tr><th>日期</th><th>时间</th><th>新增内容</th></tr>
@@ -365,6 +396,7 @@ git push -u origin main</pre>
         <tr><td>2026-09-12</td><td>03:36</td><td>新增：项目代码仓库创建并提交（含双远程配置参考流程与踩坑经验）</td></tr>
         <tr><td>2026-09-12</td><td>05:40</td><td>新增：修改项目设计样式（DESIGN.md 规范 + 去 AI 味升级）；修复模板节嵌套围栏</td></tr>
         <tr><td>2026-09-15</td><td>23:17</td><td>新增：Archify 生成系统总览图（高层架构图提示词）</td></tr>
+        <tr><td>2026-09-17</td><td>23:21</td><td>新增：i-have-adhd 输出风格（ADHD 友好回复规则）</td></tr>
       </tbody>
     </table>
   </section>
