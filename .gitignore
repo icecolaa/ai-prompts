@@ -10,3 +10,8 @@ Desktop.ini
 # 临时文件
 *.tmp
 *.log
+
+# 本仓库只收录提示词清单；其他项目/会话的文件不入库
+.zcodeignore
+skills/
+xinganling-trip/

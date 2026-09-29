@@ -126,7 +126,7 @@
   <header class="page">
     <h1>AI 常用提示词清单</h1>
     <p>沉淀日常对 AI 说的常用指令，随用随取。</p>
-    <p>最后更新：2026-09-17 23:21 · 新增内容会同步追加到本文件</p>
+    <p>最后更新：2026-09-29 15:54 · 新增内容会同步追加到本文件</p>
     <p>每条提示词均记录录入时间，便于追溯新增与修订。</p>
   </header>
 
@@ -142,8 +142,9 @@
       <li><a href="#s7">修改项目设计样式</a></li>
       <li><a href="#s8">Archify 生成系统总览图</a></li>
       <li><a href="#s9">i-have-adhd 输出风格</a></li>
-      <li><a href="#s10">新增提示词模板</a></li>
-      <li><a href="#s11">收录记录</a></li>
+      <li><a href="#s10">review 代码（验收 + 审查 + 发布）</a></li>
+      <li><a href="#s11">新增提示词模板</a></li>
+      <li><a href="#s12">收录记录</a></li>
     </ol>
   </nav>
 
@@ -371,7 +372,32 @@ git push -u origin main</pre>
   </section>
 
   <section id="s10">
-    <h2>10. 新增提示词模板</h2>
+    <h2>10. review 代码（验收 + 审查 + 发布）</h2>
+    <p class="recorded">记录时间：2026-09-29 15:54</p>
+    <p class="scenario"><b>适用场景：</b>review 代码。开发完成后按顺序走一遍：清单验收 → 代码审查 →（可选）小程序发布。</p>
+
+    <div class="block">
+      <button class="copy" onclick="copyBlock(this)">复制</button>
+      <pre>1.“帮我做完并按清单验收”：
+•每个按钮都点击一遍；
+•用正常、空值、超长内容各测试一次；
+•检查移动端；
+•把错误、复现步骤和截图写进报告；
+•只有全部通过，才标记完成。
+2.请 review 当前工作区的改动。重点检查：
+- 是否有明显 Bug。
+- 是否破坏已有功能。
+- 是否有未使用变量或调试代码。
+- 是否需要补充测试。
+请先给出问题列表，再直接修改文件。
+3.（可选）小程序发布新版，提交代码</pre>
+    </div>
+
+    <p class="scenario"><b>说明：</b>这是第 2、3 条的组合流程，差异点：验收只查<b>移动端</b>（第 2 条为移动端与网页端），并多了一步可选的「小程序发布新版，提交代码」。</p>
+  </section>
+
+  <section id="s11">
+    <h2>11. 新增提示词模板</h2>
     <p class="scenario">以后要收录新的一句话指令时，复制下面的空模板填写即可（MD 与 HTML 同步添加）。</p>
     <div class="block">
       <button class="copy" onclick="copyBlock(this)">复制</button>
@@ -385,8 +411,8 @@ git push -u origin main</pre>
     </div>
   </section>
 
-  <section id="s11">
-    <h2>11. 收录记录</h2>
+  <section id="s12">
+    <h2>12. 收录记录</h2>
     <table>
       <thead>
         <tr><th>日期</th><th>时间</th><th>新增内容</th></tr>
@@ -397,6 +423,7 @@ git push -u origin main</pre>
         <tr><td>2026-09-12</td><td>05:40</td><td>新增：修改项目设计样式（DESIGN.md 规范 + 去 AI 味升级）；修复模板节嵌套围栏</td></tr>
         <tr><td>2026-09-15</td><td>23:17</td><td>新增：Archify 生成系统总览图（高层架构图提示词）</td></tr>
         <tr><td>2026-09-17</td><td>23:21</td><td>新增：i-have-adhd 输出风格（ADHD 友好回复规则）</td></tr>
+        <tr><td>2026-09-29</td><td>15:54</td><td>新增：review 代码（移动端验收 + 代码审查 + 可选小程序发布）</td></tr>
       </tbody>
     </table>
   </section>
