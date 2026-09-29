@@ -126,7 +126,7 @@
   <header class="page">
     <h1>AI 常用提示词清单</h1>
     <p>沉淀日常对 AI 说的常用指令，随用随取。</p>
-    <p>最后更新：2026-09-29 15:54 · 新增内容会同步追加到本文件</p>
+    <p>最后更新：2026-09-29 15:59 · 新增内容会同步追加到本文件</p>
     <p>每条提示词均记录录入时间，便于追溯新增与修订。</p>
   </header>
 
@@ -143,8 +143,9 @@
       <li><a href="#s8">Archify 生成系统总览图</a></li>
       <li><a href="#s9">i-have-adhd 输出风格</a></li>
       <li><a href="#s10">review 代码（验收 + 审查 + 发布）</a></li>
-      <li><a href="#s11">新增提示词模板</a></li>
-      <li><a href="#s12">收录记录</a></li>
+      <li><a href="#s11">生图提示词</a></li>
+      <li><a href="#s12">新增提示词模板</a></li>
+      <li><a href="#s13">收录记录</a></li>
     </ol>
   </nav>
 
@@ -397,7 +398,20 @@ git push -u origin main</pre>
   </section>
 
   <section id="s11">
-    <h2>11. 新增提示词模板</h2>
+    <h2>11. 生图提示词</h2>
+    <p class="recorded">记录时间：2026-09-29 15:59</p>
+    <p class="scenario"><b>适用场景：</b>生图提示词。让 AI 帮你定风格和主题色，并生成可直接用的生图提示词。</p>
+
+    <div class="block">
+      <button class="copy" onclick="copyBlock(this)">复制</button>
+      <pre>形容一下xxx。请根据xxx做一张xxx，适用于xxx，调用技能 handdraw-style-prompter 你帮我选风格和主题色（可组合）。</pre>
+    </div>
+
+    <p class="scenario"><b>使用说明：</b>把 <code>xxx</code> 按顺序替换为——对主体的形容、主题/内容、画面类型、用途场景。<code>handdraw-style-prompter</code> 是本机技能，会从 001–278 手绘风格编号里帮你选风格（可组合）与主题色，产出中英双语提示词，并自动判断是否需要附编号参考图。</p>
+  </section>
+
+  <section id="s12">
+    <h2>12. 新增提示词模板</h2>
     <p class="scenario">以后要收录新的一句话指令时，复制下面的空模板填写即可（MD 与 HTML 同步添加）。</p>
     <div class="block">
       <button class="copy" onclick="copyBlock(this)">复制</button>
@@ -411,8 +425,8 @@ git push -u origin main</pre>
     </div>
   </section>
 
-  <section id="s12">
-    <h2>12. 收录记录</h2>
+  <section id="s13">
+    <h2>13. 收录记录</h2>
     <table>
       <thead>
         <tr><th>日期</th><th>时间</th><th>新增内容</th></tr>
@@ -424,6 +438,7 @@ git push -u origin main</pre>
         <tr><td>2026-09-15</td><td>23:17</td><td>新增：Archify 生成系统总览图（高层架构图提示词）</td></tr>
         <tr><td>2026-09-17</td><td>23:21</td><td>新增：i-have-adhd 输出风格（ADHD 友好回复规则）</td></tr>
         <tr><td>2026-09-29</td><td>15:54</td><td>新增：review 代码（移动端验收 + 代码审查 + 可选小程序发布）</td></tr>
+        <tr><td>2026-09-29</td><td>15:59</td><td>新增：生图提示词（handdraw-style-prompter 选风格与主题色）</td></tr>
       </tbody>
     </table>
   </section>
