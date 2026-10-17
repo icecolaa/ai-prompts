@@ -18,7 +18,56 @@
     --ok: #1a7f37;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 58px; }
+
+  /* 置顶导航栏 */
+  .topnav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15, 23, 42, .94);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+  .topnav .inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 20px;
+  }
+  .topnav .brand {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    text-decoration: none;
+    flex: 0 0 auto;
+  }
+  .topnav .links {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .topnav .links::-webkit-scrollbar { display: none; }
+  .topnav a.chip {
+    color: rgba(255,255,255,.72);
+    text-decoration: none;
+    font-size: 12.5px;
+    line-height: 1;
+    padding: 6px 11px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    transition: background .15s, color .15s;
+  }
+  .topnav a.chip:hover { color: #fff; background: rgba(255,255,255,.14); }
+  .topnav a.chip.active { color: #fff; background: var(--accent); border-color: rgba(255,255,255,.28); }
   body {
     margin: 0;
     background: var(--bg);
@@ -120,13 +169,36 @@
   th { background: var(--accent-soft); }
 </style>
 </head>
-<body>
+<body id="top">
+
+<nav class="topnav">
+  <div class="inner">
+    <a class="brand" href="#top">提示词清单</a>
+    <div class="links">
+      <a class="chip" href="#s1" title="任务交接与续接（长任务换窗口）">01 交接</a>
+      <a class="chip" href="#s2" title="帮我做完并按清单验收">02 验收</a>
+      <a class="chip" href="#s3" title="Review 当前工作区改动">03 Review</a>
+      <a class="chip" href="#s4" title="GitHub 项目搜索（技能调用）">04 GitHub</a>
+      <a class="chip" href="#s5" title="运行测试">05 测试</a>
+      <a class="chip" href="#s6" title="项目代码仓库创建并提交">06 仓库</a>
+      <a class="chip" href="#s7" title="修改项目设计样式">07 样式</a>
+      <a class="chip" href="#s8" title="Archify 生成系统总览图">08 架构图</a>
+      <a class="chip" href="#s9" title="i-have-adhd 输出风格">09 ADHD</a>
+      <a class="chip" href="#s10" title="review 代码（验收 + 审查 + 发布）">10 审查</a>
+      <a class="chip" href="#s11" title="生图提示词">11 生图</a>
+      <a class="chip" href="#s12" title="Codex 主导的桌面 AI 协作工作流">12 协作</a>
+      <a class="chip" href="#s13" title="新增提示词模板">13 模板</a>
+      <a class="chip" href="#s14" title="收录记录">14 记录</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
 
   <header class="page">
     <h1>AI 常用提示词清单</h1>
     <p>沉淀日常对 AI 说的常用指令，随用随取。</p>
-    <p>最后更新：2026-10-15 15:18 · 新增内容会同步追加到本文件</p>
+    <p>最后更新：2026-10-17 20:26 · 新增内容会同步追加到本文件</p>
     <p>每条提示词均记录录入时间，便于追溯新增与修订。</p>
   </header>
 
@@ -479,6 +551,7 @@ git push -u origin main</pre>
         <tr><td>2026-09-29</td><td>15:54</td><td>新增：review 代码（移动端验收 + 代码审查 + 可选小程序发布）</td></tr>
         <tr><td>2026-09-29</td><td>15:59</td><td>新增：生图提示词（handdraw-style-prompter 选风格与主题色）</td></tr>
         <tr><td>2026-10-15</td><td>15:18</td><td>新增：Codex 主导的桌面 AI 协作工作流（含恢复流程）</td></tr>
+        <tr><td>2026-10-17</td><td>20:26</td><td>优化：HTML 增加置顶导航栏（横向滑动、滚动高亮当前章节）</td></tr>
       </tbody>
     </table>
   </section>
@@ -512,6 +585,26 @@ git push -u origin main</pre>
     try { document.execCommand('copy'); done(); } catch (e) { alert('复制失败，请手动选择文本复制'); }
     document.body.removeChild(ta);
   }
+
+  // 顶部导航：滚动时高亮当前章节
+  (function () {
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.topnav a.chip'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+    if (!chips.length || !sections.length) return;
+    function onScroll() {
+      var pos = window.scrollY + 90;
+      var current = sections[0].id;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop <= pos) current = sections[i].id;
+      }
+      chips.forEach(function (a) {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
 </script>
 </body>
 </html>
